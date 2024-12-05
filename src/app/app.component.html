@@ -1,4 +1,14 @@
+<!-- imperative approach -->
 <select (change)="selectTodo($event)">
+  @for (todo of todos.value()?.todos; track todo.id) {
+    <option [value]="todo.id">
+      {{ todo.todo }}
+    </option>
+  }
+</select>
+
+<!-- declarative approach -->
+<select [formControl]="todoControl">
   @for (todo of todos.value()?.todos; track todo.id) {
     <option [value]="todo.id">
       {{ todo.todo }}
