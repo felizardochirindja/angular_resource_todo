@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Todo, TodoResponse } from './app.component';
+import { ApiResponse, Todo } from './app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class TodoService {
   selectedTodoId = signal<number | null>(null);
 
   todos = rxResource({
-    loader: () => this.http.get<TodoResponse>(this.baseUrl),
+    loader: () => this.http.get<ApiResponse<Todo>>(this.baseUrl),
   });
 
   todo = rxResource({

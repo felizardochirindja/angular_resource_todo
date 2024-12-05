@@ -56,8 +56,8 @@ export interface Todo {
   completed: boolean
 }
 
-export interface TodoResponse {
-  todos: Todo[]
+export type ApiResponse<T> = {
+  todos: T[]
   total: number
   skip: number
   limit: number
