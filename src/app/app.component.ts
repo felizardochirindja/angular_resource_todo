@@ -9,7 +9,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './app.component.scss', 
   imports: [ReactiveFormsModule]
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   private destroy$ = new Subject<void>();
 
   todoService = inject(TodoService);
@@ -22,11 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
   todoControl = new FormControl();
 
   // react to changes in the select todo element using declarative approach
-  selectTodo$ = this.todoControl.valueChanges.pipe(
-    takeUntil(this.destroy$),
-    map(id => Number(id)),
-    map(id => this.todoService.selectedTodoId.set(id))
-  );
+  // selectTodo$ = this.todoControl.valueChanges.pipe(
+  //   takeUntil(this.destroy$),
+  //   map(id => Number(id)),
+  //   map(id => this.todoService.selectedTodoId.set(id))
+  // );
 
   // react to changes in the select todo element using imperative approach
   selectTodo(event: Event) {
@@ -40,12 +40,12 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log(this.todo.value()?.todo);
   });
 
-  ngOnInit() {
-    this.selectTodo$.subscribe();
-  }
+  // ngOnInit() {
+  //   this.selectTodo$.subscribe();
+  // }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+  // ngOnDestroy() {
+  //   this.destroy$.next();
+  //   this.destroy$.complete();
+  // }
 }

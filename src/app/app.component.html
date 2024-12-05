@@ -1,22 +1,28 @@
 <!-- imperative approach -->
-<select (change)="selectTodo($event)">
-  @for (todo of todos.value()?.todos; track todo.id) {
+<div>
+  <label>imperative approach</label>
+  <select (change)="selectTodo($event)">
+    @for (todo of todos.value()?.todos; track todo.id) {
     <option [value]="todo.id">
       {{ todo.todo }}
     </option>
-  }
-</select>
+    }
+  </select>
+</div>
 
 <!-- declarative approach -->
-<select [formControl]="todoControl">
-  @for (todo of todos.value()?.todos; track todo.id) {
+<!-- <div>
+  <label>declarative approach</label>
+  <select [formControl]="todoControl">
+    @for (todo of todos.value()?.todos; track todo.id) {
     <option [value]="todo.id">
       {{ todo.todo }}
     </option>
-  }
-</select>
+    }
+  </select>
+</div> -->
 
 <h2>Selected Todo: </h2>
 @if (todo.value()) {
-  <p>{{ todo.value()?.todo }}</p>
+<p>{{ todo.value()?.todo }}</p>
 }
