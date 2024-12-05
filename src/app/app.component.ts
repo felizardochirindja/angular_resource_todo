@@ -1,5 +1,5 @@
 import { Component, effect, inject, OnDestroy, OnInit, ResourceStatus } from '@angular/core';
-import { TodoService } from './todo.service';
+import { TodoService } from './shared/todo.service';
 import { map, Subject, takeUntil } from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -48,17 +48,4 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-}
-
-export interface Todo {
-  id: number
-  todo: string
-  completed: boolean
-}
-
-export type ApiResponse<T> = {
-  todos: T[]
-  total: number
-  skip: number
-  limit: number
 }
